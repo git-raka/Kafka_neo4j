@@ -1,0 +1,17 @@
+{
+  "name": "connector-to-aura",
+  "config": {
+        "topics": "my-topic",
+        "connector.class": "streams.kafka.connect.sink.Neo4jSinkConnector",
+        "errors.retry.timeout": "-1",
+        "errors.retry.delay.max.ms": "1000",
+        "errors.tolerance": "all",
+        "errors.log.enable": true,
+        "errors.log.include.messages": true,
+        "neo4j.server.uri": "neo4j+s://0b01f0dd.databases.neo4j.io",
+        "neo4j.authentication.basic.username": "neo4j",
+        "neo4j.authentication.basic.password": "9kYZG0qbJm6kY4B6eolrfX4myYEVK5aox41qXQvi_dM",
+        "neo4j.encryption.enabled": false,
+        "neo4j.topic.cypher.my-topic": "MERGE (p:Person{name: event.name, surname: event.surname, from: 'AVRO'}) MERGE (f:Family{name: event.surname}) MERGE (p)-[:BELONGS_TO]->(f)"
+  }
+}
